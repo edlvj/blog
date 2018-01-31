@@ -1,0 +1,23 @@
+.row
+  .col-md-2
+    %pre
+    = render 'posts/filter'
+  .col-md-10
+    - if @posts.length > 0
+      - @posts.each do |post|
+        %h1#post 
+          = post.title
+        %p
+          = post.text
+        %div
+          %span.badge 
+            Posted at
+            = post.created_at.strftime("%B %d %Y, %l:%M %P")
+            by 
+            = post.user.email
+        %div
+          = link_to 'Read', post_path(post.id), class: 'btn btn-outline-primary'
+        %hr
+    - else
+      %div.alert.alert-warning.text-center
+        No posts 

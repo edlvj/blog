@@ -1,0 +1,10 @@
+%div.container
+  .text-center
+    %h3 Log in
+    = link_to user_facebook_omniauth_authorize_path, class: "general-login-icon" do
+      %i.fa.fa-facebook-official
+    %p or
+  = render 'form'
+  %p.text-center
+    Don't have account?
+    = link_to "Sign up",  new_user_registration_path

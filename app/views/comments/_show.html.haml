@@ -1,0 +1,12 @@
+.col-md-12
+  %p
+    = comment.body
+  %div
+    %span.badge 
+      Posted at
+      = comment.created_at.strftime("%B %d %Y, %l:%M %P")
+      by 
+      = comment.user.email  
+  .row
+  - if current_user && policy(comment).destroy?
+    = button_to "Destroy", post_comment_path(post, comment), method: :delete, class: "btn btn-outline-danger", data: { confirm: 'Are you sure?' }

@@ -1,0 +1,22 @@
+@import "bootstrap";
+@import url(https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css);
+
+%flash-shared {
+  margin: 10px 0px;
+  padding: 15px 10px 15px 50px;
+  background-repeat: no-repeat;
+  background-position: 10px center;
+}
+
+.notice {
+  @extend %flash-shared;
+  color: #4F8A10;
+  background-color: #DFF2BF;
+}
+
+.alert {
+  @extend %flash-shared;
+  color: #9F6000;
+  background-color: #FEEFB3;
+}  
+

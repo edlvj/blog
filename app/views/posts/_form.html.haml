@@ -1,0 +1,7 @@
+= simple_form_for @post, html: { id: 'post_form' } do |f|
+  .form-group
+    = f.input :title, input_html: { class: 'form-control' } 
+  .form-group 
+    = f.input :text, input_html: { class: 'form-control' } 
+
+  = f.button :submit, class: 'btn btn-outline-success' 

@@ -1,0 +1,5 @@
+%h5 Add comment
+= simple_form_for comment_form, url: post_comments_path(post), html: { id: 'comment_form' } do |f| 
+  .form-group 
+    = f.input :body, input_html: { class: 'form-control' } 
+  = f.button :submit, class: 'btn btn-outline-success' 

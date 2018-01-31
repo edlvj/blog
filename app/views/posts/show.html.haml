@@ -1,0 +1,38 @@
+.h1 
+  = @post.title
+%p 
+  = @post.text
+
+%p Averate rating
+#star{avg_score: @post.average_rating,  post_id: @post.id, 'data-read-only': current_user.nil?.to_s }
+
+.row#post_actions
+  - if current_user && policy(@post).edit?
+    = link_to "Edit", edit_post_path(@post.id), class: "btn btn-outline-primary"
+  - if current_user && policy(@post).destroy?
+    = button_to "Destroy", post_path(@post.id), method: :delete, class: "btn btn-outline-danger", data: { confirm: 'Are you sure?' }
+%hr
+.div#comments
+  %b Comments
+  - @post.comments.each do |comment|
+    = render 'comments/show', comment: comment, post: @post
+    %hr
+- if current_user && policy(@comment_form).create?
+  .div
+    = render 'comments/form', post: @post, comment_form: @comment_form
+
+:javascript
+  $('#star').raty({
+    readOnly: $('#star').data('read-only'),
+    score: $('#star').attr('avg_score'),
+    path: '/',
+    click: function(score, evt) {
+      $.ajax({
+        url: '/posts/' + $('#star').attr('post_id') + '/ratings',
+        type: 'POST',
+        data: { score: score }
+      }).done(function (data){});
+    }
+  });
+
+

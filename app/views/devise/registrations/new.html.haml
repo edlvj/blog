@@ -1,0 +1,21 @@
+%div.container
+  .text-center
+    %h3 Sign Up
+    = link_to user_facebook_omniauth_authorize_path do
+      %i.fa.fa-facebook-official
+    %p.general-login-text or
+  = form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f|
+    = devise_error_messages!
+    .form-group
+      = f.label :email, "Enter Email", class:  "control-label"
+      = f.email_field :email, autofocus: true, class: "form-control", placeholder: "Enter Email"
+    .form-group
+      = f.label :password, "Password", class: "control-label"
+      = f.password_field :password, autocomplete: "off", class: "form-control", placeholder: "Password"
+    .form-group
+      = f.label :password_confirmation, "Confirm Password", class: "control-label"
+      = f.password_field :password_confirmation, autocomplete: "off", class: "form-control", placeholder: "Confirm Password"
+    = f.submit "Sign Up", class: "btn btn-default"
+  %p.text-center
+    Have an Account?
+    = link_to "Log In", user_session_path
