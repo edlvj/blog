@@ -3,10 +3,6 @@ class PostPolicy < ApplicationPolicy
     user.present?
   end  
 
-  def show?
-    true
-  end
-
   def create?
     user.present?
   end 

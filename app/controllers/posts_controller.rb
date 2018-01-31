@@ -27,7 +27,7 @@ class PostsController < ApplicationController
 
     if @post.save
       flash[:notice] = "Post created"
-      PostWorker.perform_in(1.minutes, @post.id)
+      PostWorker.perform_in(30.minutes, @post.id)
       redirect_to @post
     else
       render :new
